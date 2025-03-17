@@ -11,10 +11,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         JuegoControlador juegoControlador = new JuegoControlador();
         CategoriaControlador categoriaControlador = new CategoriaControlador();
-        UsuarioControlador usuarioControlador = new UsuarioControlador();
-        PasarelaDePagoControlador pagoControlador = new PasarelaDePagoControlador();
-
         categoriaControlador.mostrarCategorias();
+        UsuarioControlador usuarioControlador = new UsuarioControlador();
 
         int opcion;
         do {
@@ -27,11 +25,7 @@ public class Main {
             System.out.println("6. Actualizar usuario");
             System.out.println("7. Eliminar usuario");
             System.out.println("8. Listar usuarios");
-            System.out.println("9. Insertar pago");
-            System.out.println("10. Listar pagos");
-            System.out.println("11. Actualizar pago");
-            System.out.println("12. Eliminar pago");
-            System.out.println("13. Salir");
+            System.out.println("9. Salir");
             System.out.print("Elige una opción: ");
 
             while (!sc.hasNextInt()) {
@@ -185,88 +179,16 @@ public class Main {
                 case 8:
                     usuarioControlador.mostrarUsuarios();
                     break;
+
                 case 9:
-                    System.out.print("ID del pago: ");
-                    int idPago = sc.nextInt();
-                    sc.nextLine();
-                    
-                    System.out.print("ID del usuario comprador: ");
-                    int idUsuarioComprador = sc.nextInt();
-                    sc.nextLine();
-                    
-                    Usuario comprador = usuarioControlador.obtenerUsuarioPorId(idUsuarioComprador);
-                    if (comprador == null) {
-                        System.out.println("Usuario no encontrado. No se puede procesar el pago.");
-                        break;
-                    }
-
-                    System.out.print("ID del juego comprado: ");
-                    int idJuegoComprado = sc.nextInt();
-                    sc.nextLine();
-                    
-                    Juego juegoComprado = juegoControlador.obtenerJuegoPorId(idJuegoComprado);
-                    if (juegoComprado == null) {
-                        System.out.println("Juego no encontrado. No se puede procesar el pago.");
-                        break;
-                    }
-
-                    System.out.print("Monto: ");
-                    double monto = sc.nextDouble();
-                    sc.nextLine();
-                    
-                    System.out.print("Método de pago: ");
-                    String metodo = sc.nextLine();
-
-                    PasarelaDePago nuevoPago = new PasarelaDePago(
-                        idPago, 
-                        comprador, 
-                        juegoComprado, 
-                        monto, 
-                        metodo, 
-                        new Date(), 
-                        PasarelaDePago.EstadoPago.PENDIENTE
-                    );
-                    pagoControlador.insertarPago(nuevoPago);
-                    break;
-                case 10:
-                    pagoControlador.imprimirPagos();
-                    break;
-                case 11:
-                    System.out.print("ID del pago a actualizar: ");
-                    int idPagoActualizar = sc.nextInt();
-                    sc.nextLine();
-                    
-                    System.out.println("Estados disponibles:");
-                    for (PasarelaDePago.EstadoPago estado : PasarelaDePago.EstadoPago.values()) {
-                        System.out.println(estado.ordinal() + ". " + estado);
-                    }
-                    
-                    System.out.print("Selecciona el nuevo estado del pago: ");
-                    int estadoIndex = sc.nextInt();
-                    sc.nextLine();
-                    
-                    if (estadoIndex < 0 || estadoIndex >= PasarelaDePago.EstadoPago.values().length) {
-                        System.out.println("Opción de estado no válida.");
-                        break;
-                    }
-                    
-                    PasarelaDePago.EstadoPago nuevoEstado = PasarelaDePago.EstadoPago.values()[estadoIndex];
-                    pagoControlador.actualizarPago(idPagoActualizar, nuevoEstado);
-                    break;
-                case 12:
-                    System.out.print("ID del pago a eliminar: ");
-                    int idPagoEliminar = sc.nextInt();
-                    sc.nextLine();
-                    pagoControlador.eliminarPago(idPagoEliminar);
-                    break;
-                case 13:
                     System.out.println("Saliendo del sistema...");
                     break;
+
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
             }
-        } while (opcion != 13);
-        
+        } while (opcion != 9);
+
         sc.close();
     }
 }

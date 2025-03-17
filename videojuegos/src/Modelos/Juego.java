@@ -1,6 +1,7 @@
 package Modelos;
 
 import java.util.Date;
+import Modelos.Categoria;
 
 public class Juego {
     private int idJuego;
@@ -12,16 +13,17 @@ public class Juego {
     private String descripcion;
     private double rating;
 
-    public Juego(int idJuego, String nombre, Categoria categoria, Date fechaLanzamiento, 
-                 double precio, String desarrollador, String descripcion, double rating) {
+    
+
+    public Juego(int idJuego, String nombre, Categoria categoria, Date fechaLanzamiento, double precio, String desarrollador, String descripcion, double rating) {
         this.idJuego = idJuego;
         this.nombre = nombre;
         this.categoria = categoria;
         this.fechaLanzamiento = fechaLanzamiento;
-        setPrecio(precio);
-        setDesarrollador(desarrollador);
+        this.precio = precio;
+        setDesarrollador(desarrollador); // Validación aplicada
         this.descripcion = descripcion;
-        setRating(rating);
+        setRating(rating); // Validación aplicadaa
     }
 
     public int getIdJuego() { return idJuego; }
@@ -41,12 +43,7 @@ public class Juego {
     public void setFechaLanzamiento(Date fechaLanzamiento) { this.fechaLanzamiento = fechaLanzamiento; }
 
     public double getPrecio() { return precio; }
-    public void setPrecio(double precio) {
-        if (precio < 0) {
-            throw new IllegalArgumentException("El precio no puede ser negativo.");
-        }
-        this.precio = precio;
-    }
+    public void setPrecio(double precio) { this.precio = precio; }
 
     public String getDesarrollador() { return desarrollador; }
     public void setDesarrollador(String desarrollador) {
@@ -66,5 +63,4 @@ public class Juego {
         }
         this.rating = rating;
     }
-
 }

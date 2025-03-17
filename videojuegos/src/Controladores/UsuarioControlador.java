@@ -2,7 +2,6 @@ package Controladores;
 
 import Modelos.Usuario;
 import Servicios.UsuarioServicio;
-import java.util.List;
 
 public class UsuarioControlador {
     private UsuarioServicio service;
@@ -28,12 +27,6 @@ public class UsuarioControlador {
     }
 
     public Usuario obtenerUsuarioPorId(int idUsuarioFactura) {
-        List<Usuario> usuarios = service.obtenerTodosLosUsuarios(); // Usamos el método del servicio
-        for (Usuario usuario : usuarios) {
-            if (usuario.getId() == idUsuarioFactura) {
-                return usuario;
-            }
-        }
-        return null; // Retorna null si no encuentra el usuario
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

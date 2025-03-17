@@ -13,7 +13,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
+/**
+ * Clase que simula una base de datos en memoria.
+ * Contiene ArrayLists estáticos para compartir datos entre los servicios.
+ */
 public class BaseDeDatos {
     public static ArrayList<Juego> listaJuegos = new ArrayList<>();
     public static ArrayList<Usuario> listaUsuarios = new ArrayList<>();
@@ -23,7 +26,7 @@ public class BaseDeDatos {
     public static ArrayList<Factura> listaFacturas = new ArrayList<>();
     
    
-    private static final String url = "jdbc:mysql://localhost:3306/videojuego_db";
+    private static final String url = "jdbc:mysql://localhost:3306/videojuegos_db";
     private static final String usuario = "root";
     private static final String password = "";
     

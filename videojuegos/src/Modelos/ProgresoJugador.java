@@ -33,10 +33,5 @@ public class ProgresoJugador {
     public void setPorcentajeCompletado(double porcentajeCompletado) { this.porcentajeCompletado = porcentajeCompletado; }
 
     
-    public void mostrarProgreso() {
-        System.out.println("Juego: " + juego.getNombre() +
-                           " | Horas Jugadas: " + horasJugadas +
-                           " | Logros: " + logrosDesbloqueados +
-                           " | Avance: " + porcentajeCompletado + "%");
-    }
+    
 }
